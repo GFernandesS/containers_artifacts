@@ -1,0 +1,28 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userprofile
+spec:
+  selector: # Define the wrapping strategy
+    matchLabels: # Match all pods with the defined labels
+      app: userprofile # Labels follow the `name: value` template
+  template: # This is the template of the pod inside the deployment
+    metadata:
+      labels:
+        app: userprofile
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+        - image: acrchallenge01.azurecr.io/challenge/userprofile
+          env:
+            - name: SQL_SERVER
+              value: sqlserverwpk7864.database.windows.net
+          envFrom:
+            - secretRef:
+                name: sql-secret-2
+          name: userprofile
+          ports:
+            - containerPort: 80
+              name: http
