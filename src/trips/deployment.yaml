@@ -2,26 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tripviewer
+  name: trips
 spec:
   selector: # Define the wrapping strategy
     matchLabels: # Match all pods with the defined labels
-      app: tripviewer # Labels follow the `name: value` template
+      app: trips # Labels follow the `name: value` template
   template: # This is the template of the pod inside the deployment
     metadata:
       labels:
-        app: tripviewer
+        app: trips
     spec:
       nodeSelector:
         kubernetes.io/os: linux
       containers:
-        - image: acrchallenge01.azurecr.io/challenge/tripviewer
-          env:
-            - name: TRIPS_API_ENDPOINT
-              value: http://10.0.73.210
-            - name: USERPROFILE_API_ENDPOINT
-              value: http://10.0.106.139
-          name: tripviewer
+        - image: acrchallenge01.azurecr.io/challenge/trips
+          envFrom:
+            - secretRef:
+                name: sql-secret-2
+          name: trips
           ports:
             - containerPort: 80
               name: http
