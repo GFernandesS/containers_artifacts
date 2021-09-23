@@ -1,0 +1,58 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: web-dev-role-read-api
+  namespace: api
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: api-read-access
+subjects:
+  - kind: User
+    namespace: api
+    name: webdev@msftopenhack7118ops.onmicrosoft.com
+
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: web-dev-role-full-access-web
+  namespace: web
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: web-full-access
+subjects:
+  - kind: User
+    namespace: web
+    name: webdev@msftopenhack7118ops.onmicrosoft.com
+
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: api-dev-role-read-web
+  namespace: web
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: web-read-access
+subjects:
+  - kind: User
+    namespace: web
+    name: apidev@msftopenhack7118ops.onmicrosoft.com
+
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: api-dev-role-full-access-api
+  namespace: api
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: api-full-access
+subjects:
+  - kind: User
+    namespace: api
+    name: apidev@msftopenhack7118ops.onmicrosoft.com
