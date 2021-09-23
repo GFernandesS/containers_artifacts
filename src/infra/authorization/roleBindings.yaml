@@ -61,11 +61,11 @@ subjects:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: hacker-1-full-access
+  name: hacker-1-cluster-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: full-access
+  name: cluster-admin
 subjects:
   - kind: User
     namespace: api
@@ -75,11 +75,11 @@ subjects:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: hacker-2-full-access
+  name: hacker-2-cluster-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: full-access
+  name: cluster-admin
 subjects:
   - kind: User
     namespace: api
@@ -89,11 +89,11 @@ subjects:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: hacker-3-full-access
+  name: hacker-3-cluster-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: full-access
+  name: cluster-admin
 subjects:
   - kind: User
     namespace: api
@@ -103,11 +103,11 @@ subjects:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: hacker-4-full-access
+  name: hacker-4-cluster-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: full-access
+  name: cluster-admin
 subjects:
   - kind: User
     namespace: api
@@ -117,11 +117,11 @@ subjects:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: hacker-5-full-access
+  name: hacker-5-cluster-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: full-access
+  name: cluster-admin
 subjects:
   - kind: User
     namespace: api
@@ -131,11 +131,11 @@ subjects:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: hacker-6-full-access
+  name: hacker-6-cluster-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: full-access
+  name: cluster-admin
 subjects:
   - kind: User
     namespace: api
