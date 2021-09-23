@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: userprofile
+  namespace: userprofile
 spec:
   selector: # Define the wrapping strategy
     matchLabels: # Match all pods with the defined labels

@@ -1,0 +1,133 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poi
+  namespace: api
+spec:
+  selector: # Define the wrapping strategy
+    matchLabels: # Match all pods with the defined labels
+      app: poi # Labels follow the `name: value` template
+  template: # This is the template of the pod inside the deployment
+    metadata:
+      labels:
+        app: poi
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+        - image: acrchallenge01.azurecr.io/challenge01/poi
+          name: poi
+          ports:
+            - containerPort: 80
+              name: http
+---
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trips
+  namespace: api
+spec:
+  selector: # Define the wrapping strategy
+    matchLabels: # Match all pods with the defined labels
+      app: trips # Labels follow the `name: value` template
+  template: # This is the template of the pod inside the deployment
+    metadata:
+      labels:
+        app: trips
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+        - image: acrchallenge01.azurecr.io/challenge/trips
+          envFrom:
+            - secretRef:
+                name: sql-secret-2
+          name: trips
+          ports:
+            - containerPort: 80
+              name: http
+---
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tripviewer
+  namespace: web
+spec:
+  selector: # Define the wrapping strategy
+    matchLabels: # Match all pods with the defined labels
+      app: tripviewer # Labels follow the `name: value` template
+  template: # This is the template of the pod inside the deployment
+    metadata:
+      labels:
+        app: tripviewer
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+        - image: acrchallenge01.azurecr.io/challenge/tripviewer
+          env:
+            - name: TRIPS_API_ENDPOINT
+              value: http://trips.api.svc.cluster.local
+            - name: USERPROFILE_API_ENDPOINT
+              value: http://userprofile.api.svc.cluster.local
+          name: tripviewer
+          ports:
+            - containerPort: 80
+              name: http
+---
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-java
+  namespace: api
+spec:
+  selector: # Define the wrapping strategy
+    matchLabels: # Match all pods with the defined labels
+      app: user-java # Labels follow the `name: value` template
+  template: # This is the template of the pod inside the deployment
+    metadata:
+      labels:
+        app: user-java
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+        - image: acrchallenge01.azurecr.io/challenge/user-java
+          envFrom:
+            - secretRef:
+                name: sql-secret-2
+          name: user-java
+          ports:
+            - containerPort: 80
+              name: http
+---
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userprofile
+  namespace: api
+spec:
+  selector: # Define the wrapping strategy
+    matchLabels: # Match all pods with the defined labels
+      app: userprofile # Labels follow the `name: value` template
+  template: # This is the template of the pod inside the deployment
+    metadata:
+      labels:
+        app: userprofile
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+        - image: acrchallenge01.azurecr.io/challenge/userprofile
+          envFrom:
+            - secretRef:
+                name: sql-secret-2
+          name: userprofile
+          ports:
+            - containerPort: 80
+              name: http
