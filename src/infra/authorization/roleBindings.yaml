@@ -56,3 +56,87 @@ subjects:
   - kind: User
     namespace: api
     name: apidev@msftopenhack7118ops.onmicrosoft.com
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hacker-1-full-access
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: full-access
+subjects:
+  - kind: User
+    namespace: api
+    name: 	hacker1n85@msftopenhack7118ops.onmicrosoft.com
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hacker-2-full-access
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: full-access
+subjects:
+  - kind: User
+    namespace: api
+    name: 	hacker2l5a@msftopenhack7118ops.onmicrosoft.com
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hacker-3-full-access
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: full-access
+subjects:
+  - kind: User
+    namespace: api
+    name: hacker30ai@msftopenhack7118ops.onmicrosoft.com
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hacker-4-full-access
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: full-access
+subjects:
+  - kind: User
+    namespace: api
+    name: hacker4ppg@msftopenhack7118ops.onmicrosoft.com
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hacker-5-full-access
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: full-access
+subjects:
+  - kind: User
+    namespace: api
+    name: hacker5yn5@msftopenhack7118ops.onmicrosoft.com
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hacker-6-full-access
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: full-access
+subjects:
+  - kind: User
+    namespace: api
+    name: hacker6d1x@msftopenhack7118ops.onmicrosoft.com
